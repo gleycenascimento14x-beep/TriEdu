@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Triedu Monitoria — Multi-views</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brown-800: #5f4439;
+  --brown-600: #7a5f54;
+  --brown-300: #d6bda9;
+  --accent: #f79e3b;
+  --white: #ffffff;
+  --max-width: 1100px;
+}
+*{box-sizing:border-box;}
+html,body{height:100%; margin:0; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:var(--brown-800); background:#f7f7f7; line-height:1.45;}
+.wrap{max-width:var(--max-width); margin:24px auto; padding:0 16px;}
+.card{background:var(--white); border-radius:8px; box-shadow:0 6px 22px rgba(0,0,0,0.06); overflow:hidden;}
+header{background: var(--brown-800); padding:20px; color:#fff; text-align:center; border-radius:8px;}
+header h1{font-family:"Playfair Display",serif; margin:0; font-size:28px;}
+header p{margin:6px 0 0; opacity:0.95;}
+main{padding:28px;}
+.hide{display:none;}
+.btn{display:inline-block; padding:10px 16px; border:2px solid var(--brown-800); background:transparent; color:var(--brown-800); text-decoration:none; border-radius:6px; font-weight:600; cursor:pointer;}
+.btn-primary{background:var(--brown-800); color:var(--white); border-color:var(--brown-800);}
+.section-title{font-family:"Playfair Display",serif; font-size:28px; margin:0 0 12px;}
+.hero{display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center;}
+.hero h2{font-family:"Playfair Display",serif; font-size:36px; margin:0 0 10px;}
+.lead{color:var(--brown-600); max-width:560px; margin-bottom:16px;}
+.hero-figure{width:420px; height:420px; border-radius:28px; overflow:hidden; background:var(--brown-600); display:flex; align-items:center; justify-content:center;}
+.hero-figure img{width:100%;height:100%;object-fit:cover; clip-path:ellipse(85% 90% at 50% 20%);}
+.about{display:grid; grid-template-columns:360px 1fr; gap:20px; align-items:center; background:var(--brown-600); color:#fff; padding:22px; border-radius:8px;}
+.logo-wrap{background:#fff; border-radius:50% 50% 0 0; padding:28px; height:240px; display:flex; align-items:center; justify-content:center;}
+.logo-wrap img{max-width:65%;}
+.about ul{margin:0 0 0 16px; padding:0;}
+.about li{margin-bottom:8px;}
+.services{background:var(--brown-300); padding:18px; border-radius:8px; margin-top:18px;}
+.services-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+.service{text-align:center; padding:16px; border-radius:8px;}
+.circle{width:56px;height:56px;border-radius:50%;background:var(--brown-800);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:8px;}
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+.card-course{padding:18px;border-radius:8px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.04);}
+.card-course h4{margin:8px 0;}
+.contact{display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:center; padding:18px; border-radius:8px;}
+input, select{width:100%;padding:8px;border-radius:4px;border:1px solid #ccc; margin-bottom:12px;}
+.language-buttons{position:fixed;top:10px;right:10px;display:flex;gap:8px;z-index:1000;}
+@media(max-width:1000px){.hero{grid-template-columns:1fr 320px;}}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-figure{width:100%;height:240px;border-radius:18px; clip-path:none}.about{grid-template-columns:1fr; text-align:center}.services-grid{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr}.contact{grid-template-columns:1fr}}
+.muted{color:var(--brown-600);}
+.spaced{margin-top:12px;}
+.center{text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- Botões de idioma -->
+<div class="language-buttons">
+  <button class="btn" onclick="changeLanguage('pt')">PT</button>
+  <button class="btn" onclick="changeLanguage('en')">EN</button>
+  <button class="btn" onclick="changeLanguage('es')">ES</button>
+</div>
+
+<!-- ====================== HOME ====================== -->
+<div id="page-home" class="wrap card">
+<header>
+<h1 data-translate="TRIEDU — Monitoria & Cursos">TRIEDU — Monitoria & Cursos</h1>
+<p data-translate="Monitoria acessível e humanizada em Português e matemática. E curso de programação em Java.">Monitoria acessível e humanizada em Português e matemática. E curso de programação em Java.</p>
+</header>
+<main>
+<section class="hero">
+<div>
+<h2 data-translate="Procurando apoio personalizado para seus estudos?">Procurando apoio personalizado para seus estudos?</h2>
+<p class="lead" data-translate="Na Triedu, você encontra monitoria acessível e humanizada em Português e Matemática, feita para apoiar estudantes do Fundamental, Ensino Médio e vestibulandos. Também oferecemos cursos de programação em Java.">
+Na Triedu, você encontra monitoria acessível e humanizada em Português e Matemática, feita para apoiar estudantes do Fundamental, Ensino Médio e vestibulandos. Também oferecemos cursos de programação em Java.
+</p>
+<div class="spaced">
+<button class="btn btn-primary" onclick="showPage('page-saibamais')" data-translate="Saiba mais">Saiba mais</button>
+<button class="btn" onclick="showPage('page-java')" data-translate="Curso Java">Curso Java</button>
+<button class="btn" onclick="showPage('page-planos')" data-translate="Planos">Planos</button>
+</div>
+</div>
+<figure class="hero-figure">
+<img src="imagesstudy.jpg" alt="Pessoa estudando com livro aberto e lápis">
+</figure>
+</section>
+<section class="about spaced">
+<div class="logo-wrap"><img src="logotriedu.jpg" alt="Logotipo da Triedu Monitoria"></div>
+<div>
+<h3 class="section-title" data-translate="Sobre nós">Sobre nós</h3>
+<p class="muted" data-translate="Somos uma equipe apaixonada por educação:">Somos uma equipe apaixonada por educação:</p>
+<ul>
+<li data-translate="Janicy — Monitora de Matemática e orientadora do curso de Java.">Janicy — Monitora de Matemática e orientadora do curso de Java.</li>
+<li data-translate="Gleyce — Monitora de Português e responsável pelas finanças da empresa.">Gleyce — Monitora de Português e responsável pelas finanças da empresa.</li>
+<li data-translate="Thayná — responsável pela coordenação de projetos."><strong>Thayná</strong> — responsável pela coordenação de projetos.</li>
+<li data-translate="Mailane — responsável pelo marketing."><strong>Mailane</strong> — responsável pelo marketing.</li>
+</ul>
+<p class="muted spaced" data-translate="Nossa missão é tornar o aprendizado acessível, organizado e eficiente, ajudando você a alcançar suas metas acadêmicas.">Nossa missão é tornar o aprendizado acessível, organizado e eficiente, ajudando você a alcançar suas metas acadêmicas.</p>
+</div>
+</section>
+
+<section class="services spaced">
+<h3 class="section-title" data-translate="Serviços">Serviços</h3>
+<div class="services-grid">
+<div class="service"><div class="circle">1</div><p data-translate="Monitoria em Matemática">Monitoria em Matemática</p></div>
+<div class="service"><div class="circle">2</div><p data-translate="Monitoria em Português">Monitoria em Português</p></div>
+<div class="service"><div class="circle">3</div><p data-translate="Curso de programação em Java">Curso de programação em Java</p></div>
+<div class="service"><div class="circle">4</div><p data-translate="Aulas gravadas (gratuitas)">Aulas gravadas (gratuitas)</p></div>
+<div class="service"><div class="circle">5</div><p data-translate="Videoconferências ao vivo (Premium)">Videoconferências ao vivo (Premium)</p></div>
+<div class="service"><div class="circle">6</div><p data-translate="Materiais interativos">Materiais interativos</p></div>
+<div class="service"><div class="circle">7</div><p data-translate="Simulados mensais">Simulados mensais</p></div>
+<div class="service"><div class="circle">8</div><p data-translate="Cronograma individualizado">Cronograma individualizado</p></div>
+</div>
+</section>
+<footer class="center spaced muted">© <span id="year-home"></span> <span data-translate="Triedu Monitoria — Todos os direitos reservados">Triedu Monitoria — Todos os direitos reservados</span></footer>
+</main>
+</div>
+
+<!-- ====================== SAIBA MAIS ====================== -->
+<div id="page-saibamais" class="wrap card hide">
+<header>
+<h1 data-translate="Saiba mais — Triedu Monitoria">Saiba mais — Triedu Monitoria</h1>
+<p data-translate="Uma visão mais detalhada sobre nossa missão, resultados e contato.">Uma visão mais detalhada sobre nossa missão, resultados e contato.</p>
+</header>
+<main>
+<section class="about2">
+<img src="logotriedu.jpg" alt="Logo Triedu" class="logo" style="display:block;margin:0 auto;">
+<div>
+<h3 class="section-title" data-translate="Quem somos">Quem somos</h3>
+<p class="muted" data-translate="A TriEdu foi criada com a missão de oferecer suporte em Matemática e Português para estudantes que enfrentam dificuldades, além de preparar futuros profissionais de programação por meio do curso de Java, alinhado às demandas do mercado de trabalho.">
+A TriEdu foi criada com a missão de oferecer suporte em Matemática e Português para estudantes que enfrentam dificuldades, além de preparar futuros profissionais de programação por meio do curso de Java, alinhado às demandas do mercado de trabalho.
+</p>
+<p class="muted" data-translate="Aqui você encontra uma plataforma diversa, com conteúdos preparados para facilitar sua jornada de estudos. Oferecemos vídeo aulas, acompanhamento individualizado e materiais de apoio que tornam o aprendizado mais leve e eficiente.">
+Aqui você encontra uma plataforma diversa, com conteúdos preparados para facilitar sua jornada de estudos. Oferecemos vídeo aulas, acompanhamento individualizado e materiais de apoio que tornam o aprendizado mais leve e eficiente.
+</p>
+<p class="muted" data-translate="Nosso objetivo é apoiar você em cada etapa, seja para superar dificuldades em Matemática e Português ou para se preparar para o mercado de programação com o curso de Java.">
+Nosso objetivo é apoiar você em cada etapa, seja para superar dificuldades em Matemática e Português ou para se preparar para o mercado de programação com o curso de Java.
+</p>
+<div class="spaced">
+<button class="btn" onclick="showPage('page-home')" data-translate="Voltar para Início">Voltar para Início</button>
+<button class="btn btn-primary" onclick="showPage('page-planos')" data-translate="Planos">Planos</button>
+<button class="btn" onclick="showPage('page-login')" data-translate="Login">Login</button>
+</div>
+</div>
+</section>
+<footer class="center spaced muted">© <span id="year-saibamais"></span> <span data-translate="Triedu Monitoria">Triedu Monitoria</span></footer>
+</main>
+</div>
+
+<!-- ====================== CURSO JAVA ====================== -->
+<div id="page-java" class="wrap card hide">
+<header>
+<h1 data-translate="Curso: Java (Básico ao Intermediário)">Curso: Java (Básico ao Intermediário)</h1>
+<p data-translate="Aprenda lógica, OO e construa aplicativos simples com Java.">Aprenda lógica, OO e construa aplicativos simples com Java.</p>
+</header>
+<main>
+<section>
+<h3 class="section-title" data-translate="O que você vai aprender">O que você vai aprender</h3>
+<ul>
+<li data-translate="Fundamentos de programação e lógica">Fundamentos de programação e lógica</li>
+<li data-translate="Estruturas de controle (if, loops)">Estruturas de controle (if, loops)</li>
+<li data-translate="Programação orientada a objetos: classes, herança, polimorfismo">Programação orientada a objetos: classes, herança, polimorfismo</li>
+<li data-translate="Manipulação de coleções e APIs básicas">Manipulação de coleções e APIs básicas</li>
+<li data-translate="Projeto final: mini-aplicação console / Swing (opcional)">Projeto final: mini-aplicação console / Swing (opcional)</li>
+</ul>
+<div class="spaced">
+<button class="btn btn-primary" onclick="enroll('Java')" data-translate="Inscrever-se">Inscrever-se</button>
+<button class="btn" onclick="showPage('page-home')" data-translate="← Voltar">← Voltar</button>
+</div>
+</section>
+</main>
+</div>
+
+<!-- ====================== PLANOS ====================== -->
+<div id="page-planos" class="wrap card hide">
+<header>
+<h1 data-translate="Planos e Acessos">Planos e Acessos</h1>
+<p data-translate="Escolha o plano ideal para seu ritmo de estudos e acompanhamento.">Escolha o plano ideal para seu ritmo de estudos e acompanhamento.</p>
+</header>
+<main>
+<section>
+<table style="width:100%; border-collapse:collapse;">
+<thead>
+<tr><th data-translate="Plano">Plano</th><th data-translate="Recursos">Recursos</th><th data-translate="Preço">Preço</th><th></th></tr>
+</thead>
+<tbody>
+<tr>
+<td data-translate="Gratuito">Gratuito</td>
+<td data-translate="Acesso básico à monitoria">Acesso básico à monitoria</td>
+<td>R$ 0</td>
+<td><button class="btn btn-primary" onclick="showPage('page-cadastro')" data-translate="Escolher">Escolher</button></td>
+</tr>
+<tr>
+<td data-translate="Monitoria Premium">Monitoria Premium</td>
+<td data-translate="Acompanhamento individualizado">Acompanhamento individualizado</td>
+<td>R$ 100/mês</td>
+<td><button class="btn btn-primary" onclick="showPage('page-cadastro')" data-translate="Escolher">Escolher</button></td>
+</tr>
+<tr>
+<td data-translate="Curso Java">Curso Java</td>
+<td data-translate="Curso completo de Java">Curso completo de Java</td>
+<td>R$ 150</td>
+<td><button class="btn btn-primary" onclick="showPage('page-cadastro')" data-translate="Escolher">Escolher</button></td>
+</tr>
+<tr>
+<td data-translate="Plano Combo">Plano Combo</td>
+<td data-translate="Monitoria Premium + Curso Java">Monitoria Premium + Curso Java</td>
+<td>R$ 220</td>
+<td><button class="btn btn-primary" onclick="showPage('page-cadastro')" data-translate="Escolher">Escolher</button></td>
+</tr>
+</tbody>
+</table>
+<div class="spaced">
+<button class="btn" onclick="showPage('page-home')" data-translate="← Voltar">← Voltar</button>
+</div>
+</section>
+</main>
+</div>
+
+<!-- ====================== CADASTRO ====================== -->
+<div id="page-cadastro" class="wrap card hide">
+<header>
+<h1 data-translate="Cadastro — Triedu Monitoria">Cadastro — Triedu Monitoria</h1>
+<p data-translate="Preencha seus dados para começar.">Preencha seus dados para começar.</p>
+</header>
+<main>
+<section>
+<form id="form-cadastro">
+<input type="text" id="nome" placeholder="Nome completo" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="password" id="senha" placeholder="Senha" required>
+<select id="plano">
+<option value="Gratuito">Gratuito</option>
+<option value="Monitoria Premium">Monitoria Premium</option>
+<option value="Curso Java">Curso Java</option>
+<option value="Combo">Combo</option>
+</select>
+<button type="submit" class="btn btn-primary" data-translate="Cadastrar">Cadastrar</button>
+</form>
+<div class="spaced"><button class="btn" onclick="showPage('page-planos')" data-translate="← Voltar">← Voltar</button></div>
+</section>
+</main>
+</div>
+
+<!-- ====================== LOGIN ====================== -->
+<div id="page-login" class="wrap card hide">
+<header>
+<h1 data-translate="Login — Triedu Monitoria">Login — Triedu Monitoria</h1>
+<p data-translate="Digite seus dados para acessar a plataforma">Digite seus dados para acessar a plataforma</p>
+</header>
+<main>
+<section>
+<form id="form-login">
+<input type="email" id="login-email" placeholder="Email" required>
+<input type="password" id="login-senha" placeholder="Senha" required>
+<button type="submit" class="btn btn-primary" data-translate="Entrar">Entrar</button>
+</form>
+<div class="spaced"><button class="btn" onclick="showPage('page-saibamais')" data-translate="← Voltar">← Voltar</button></div>
+</section>
+</main>
+</div>
+
+<!-- ====================== SCRIPT ====================== -->
+<script>
+const pages=['page-home','page-saibamais','page-java','page-planos','page-cadastro','page-login'];
+
+function showPage(id){
+  pages.forEach(p=>document.getElementById(p).classList.add('hide'));
+  document.getElementById(id).classList.remove('hide');
+  window.scrollTo(0,0);
+}
+
+function enroll(name){
+  alert("Inscrição solicitada para: " + name);
+  showPage('page-cadastro');
+}
+
+// Cadastro
+document.getElementById('form-cadastro').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Cadastro realizado com sucesso!');
+  showPage('page-login');
+});
+
+// Login
+document.getElementById('form-login').addEventListener('submit', function(e){
+  e.preventDefault();
+  const email=document.getElementById('login-email').value;
+  const senha=document.getElementById('login-senha').value;
+  if(email && senha){ showPage('page-home'); }
+});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  showPage('page-home');
+  document.getElementById('year-home').textContent = new Date().getFullYear();
+  document.getElementById('year-saibamais').textContent = new Date().getFullYear();
+});
+
+// Tradução
+const translations = {
+  en:{
+    "TRIEDU — Monitoria & Cursos":"TRIEDU — Tutoring & Courses",
+    "Monitoria acessível e humanizada em Português e matemática. E curso de programação em Java.":"Accessible and personalized tutoring in Portuguese and Math. Also a Java programming course.",
+    "Procurando apoio personalizado para seus estudos?":"Looking for personalized support for your studies?",
+    "Na Triedu, você encontra monitoria acessível e humanizada em Português e Matemática, feita para apoiar estudantes do Fundamental, Ensino Médio e vestibulandos. Também oferecemos cursos de programação em Java.":"At Triedu, you find accessible and personalized tutoring in Portuguese and Math, designed to support Elementary, High School, and entrance exam students. We also offer Java programming courses.",
+    "Saiba mais":"Learn more",
+    "Curso Java":"Java Course",
+    "Planos":"Plans",
+    "Sobre nós":"About Us",
+    "Somos uma equipe apaixonada por educação:":"We are a team passionate about education:",
+    "Janicy — Monitora de Matemática e orientadora do curso de Java.":"Janicy — Math tutor and Java course instructor.",
+    "Gleyce — Monitora de Português e responsável pelas finanças da empresa.":"Gleyce — Portuguese tutor and responsible for company finances.",
+    "Thayná — responsável pela coordenação de projetos.":"Thayná — project coordinator.",
+    "Mailane — responsável pelo marketing.":"Mailane — marketing manager.",
+    "Nossa missão é tornar o aprendizado acessível, organizado e eficiente, ajudando você a alcançar suas metas acadêmicas.":"Our mission is to make learning accessible, organized, and efficient, helping you reach your academic goals.",
+    "Serviços":"Services",
+    "Monitoria em Matemática":"Math Tutoring",
+    "Monitoria em Português":"Portuguese Tutoring",
+    "Curso de programação em Java":"Java Programming Course",
+    "Aulas gravadas (gratuitas)":"Recorded Lessons (free)",
+    "Videoconferências ao vivo (Premium)":"Live Videoconferences (Premium)",
+    "Materiais interativos":"Interactive Materials",
+    "Simulados mensais":"Monthly Mock Tests",
+    "Cronograma individualizado":"Individual Schedule",
+    "Triedu Monitoria — Todos os direitos reservados":"Triedu Tutoring — All rights reserved",
+    "Saiba mais — Triedu Monitoria":"Learn more — Triedu Tutoring",
+    "Uma visão mais detalhada sobre nossa missão, resultados e contato.":"A more detailed view of our mission, results, and contact.",
+    "Quem somos":"Who we are",
+    "A TriEdu foi criada com a missão de oferecer suporte em Matemática e Português para estudantes que enfrentam dificuldades, além de preparar futuros profissionais de programação por meio do curso de Java, alinhado às demandas do mercado de trabalho.":"TriEdu was created to offer support in Math and Portuguese for students facing difficulties, and also to prepare future programming professionals through the Java course, aligned with market demands.",
+    "Aqui você encontra uma plataforma diversa, com conteúdos preparados para facilitar sua jornada de estudos. Oferecemos vídeo aulas, acompanhamento individualizado e materiais de apoio que tornam o aprendizado mais leve e eficiente.":"Here you find a diverse platform, with content prepared to ease your study journey. We offer video lessons, individual guidance, and support materials that make learning smoother and more efficient.",
+    "Nosso objetivo é apoiar você em cada etapa, seja para superar dificuldades em Matemática e Português ou para se preparar para o mercado de programação com o curso de Java.":"Our goal is to support you at every step, whether to overcome difficulties in Math and Portuguese or to prepare for the programming market with the Java course.",
+    "Voltar para Início":"Back to Home",
+    "Login":"Login",
+    "Curso: Java (Básico ao Intermediário)":"Course: Java (Basic to Intermediate)",
+    "Aprenda lógica, OO e construa aplicativos simples com Java.":"Learn logic, OOP, and build simple apps with Java.",
+    "O que você vai aprender":"What you will learn",
+    "Fundamentos de programação e lógica":"Programming and logic fundamentals",
+    "Estruturas de controle (if, loops)":"Control structures (if, loops)",
+    "Programação orientada a objetos: classes, herança, polimorfismo":"Object-oriented programming: classes, inheritance, polymorphism",
+    "Manipulação de coleções e APIs básicas":"Collections and basic API handling",
+    "Projeto final: mini-aplicação console / Swing (opcional)":"Final project: mini console / Swing application (optional)",
+    "Inscrever-se":"Enroll",
+    "← Voltar":"← Back",
+    "Planos e Acessos":"Plans & Access",
+    "Escolha o plano ideal para seu ritmo de estudos e acompanhamento.":"Choose the ideal plan for your study pace and guidance.",
+    "Plano":"Plan",
+    "Recursos":"Resources",
+    "Preço":"Price",
+    "Escolher":"Choose",
+    "Cadastro — Triedu Monitoria":"Registration — Triedu Tutoring",
+    "Preencha seus dados para começar.":"Fill in your details to start.",
+    "Cadastrar":"Register",
+    "Digite seus dados para acessar a plataforma":"Enter your details to access the platform",
+    "Entrar":"Enter"
+  },
+  es:{
+    "TRIEDU — Monitoria & Cursos":"TRIEDU — Tutoría & Cursos",
+    "Monitoria acessível e humanizada em Português e matemática. E curso de programação em Java.":"Tutoría accesible y personalizada en Portugués y Matemáticas. También curso de programación en Java.",
+    "Procurando apoio personalizado para seus estudos?":"¿Buscas apoyo personalizado para tus estudios?",
+    "Na Triedu, você encontra monitoria acessível e humanizada em Português e Matemática, feita para apoiar estudantes do Fundamental, Ensino Médio e vestibulandos. Também oferecemos cursos de programação em Java.":"En Triedu, encuentras tutoría accesible y personalizada en Portugués y Matemáticas, diseñada para apoyar a estudiantes de Primaria, Secundaria y exámenes de ingreso. También ofrecemos cursos de programación en Java.",
+    "Saiba mais":"Saber más",
+    "Curso Java":"Curso de Java",
+    "Planos":"Planes",
+    "Sobre nós":"Sobre nosotros",
+    "Somos uma equipe apaixonada por educação:":"Somos un equipo apasionado por la educación:",
+    "Janicy — Monitora de Matemática e orientadora do curso de Java.":"Janicy — Tutora de Matemáticas e instructora del curso de Java.",
+    "Gleyce — Monitora de Português e responsável pelas finanças da empresa.":"Gleyce — Tutora de Portugués y responsable de las finanzas de la empresa.",
+    "Thayná — responsável pela coordenação de projetos.":"Thayná — Coordinadora de proyectos.",
+    "Mailane — responsável pelo marketing.":"Mailane — responsable de marketing.",
+    "Nossa missão é tornar o aprendizado acessível, organizado e eficiente, ajudando você a alcançar suas metas acadêmicas.":"Nuestra misión es hacer que el aprendizaje sea accesible, organizado y eficiente, ayudándote a alcanzar tus metas académicas.",
+    "Serviços":"Servicios",
+    "Monitoria em Matemática":"Tutoría de Matemáticas",
+    "Monitoria em Português":"Tutoría de Portugués",
+    "Curso de programação em Java":"Curso de programación en Java",
+    "Aulas gravadas (gratuitas)":"Clases grabadas (gratuitas)",
+    "Videoconferências ao vivo (Premium)":"Videoconferencias en vivo (Premium)",
+    "Materiais interativos":"Materiales interactivos",
+    "Simulados mensais":"Simulacros mensuales",
+    "Cronograma individualizado":"Cronograma individualizado",
+    "Triedu Monitoria — Todos os direitos reservados":"Triedu Tutoría — Todos los derechos reservados",
+    "Saiba mais — Triedu Monitoria":"Saber más — Triedu Tutoría",
+    "Uma visão mais detalhada sobre nossa missão, resultados e contato.":"Una visión más detallada sobre nuestra misión, resultados y contacto.",
+    "Quem somos":"Quiénes somos",
+    "A TriEdu foi criada com a missão de oferecer suporte em Matemática e Português para estudantes que enfrentam dificuldades, além de preparar futuros profissionais de programação por meio do curso de Java, alinhado às demandas do mercado de trabalho.":"TriEdu fue creada para ofrecer soporte en Matemáticas y Portugués a estudiantes con dificultades, además de preparar futuros profesionales de programación a través del curso de Java, alineado con las demandas del mercado.",
+    "Aqui você encontra uma plataforma diversa, com conteúdos preparados para facilitar sua jornada de estudos. Oferecemos vídeo aulas, acompanhamento individualizado e materiais de apoio que tornam o aprendizado mais leve e eficiente.":"Aquí encuentras una plataforma diversa, con contenidos preparados para facilitar tu viaje de estudios. Ofrecemos video lecciones, seguimiento individual y materiales de apoyo que hacen el aprendizaje más fácil y eficiente.",
+    "Nosso objetivo é apoiar você em cada etapa, seja para superar dificuldades em Matemática e Português ou para se preparar para o mercado de programação com o curso de Java.":"Nuestro objetivo es apoyarte en cada etapa, ya sea para superar dificultades en Matemáticas y Portugués o para prepararte para el mercado de programación con el curso de Java.",
+    "Voltar para Início":"Volver al inicio",
+    "Login":"Iniciar sesión",
+    "Curso: Java (Básico ao Intermediário)":"Curso: Java (Básico a Intermedio)",
+    "Aprenda lógica, OO e construa aplicativos simples com Java.":"Aprende lógica, POO y construye aplicaciones simples con Java.",
+    "O que você vai aprender":"Qué aprenderás",
+    "Fundamentos de programação e lógica":"Fundamentos de programación y lógica",
+    "Estruturas de controle (if, loops)":"Estructuras de control (if, loops)",
+    "Programação orientada a objetos: classes, herança, polimorfismo":"Programación orientada a objetos: clases, herencia, polimorfismo",
+    "Manipulação de coleções e APIs básicas":"Manejo de colecciones y APIs básicas",
+    "Projeto final: mini-aplicação console / Swing (opcional)":"Proyecto final: mini-aplicación consola / Swing (opcional)",
+    "Inscrever-se":"Inscribirse",
+    "← Voltar":"← Volver",
+    "Planos e Acessos":"Planes y Accesos",
+    "Escolha o plano ideal para seu ritmo de estudos e acompanhamento.":"Elige el plan ideal para tu ritmo de estudio y seguimiento.",
+    "Plano":"Plan",
+    "Recursos":"Recursos",
+    "Preço":"Precio",
+    "Escolher":"Elegir",
+    "Cadastro — Triedu Monitoria":"Registro — Triedu Tutoría",
+    "Preencha seus dados para começar.":"Rellena tus datos para comenzar.",
+    "Cadastrar":"Registrarse",
+    "Digite seus dados para acessar a plataforma":"Ingresa tus datos para acceder a la plataforma",
+    "Entrar":"Entrar"
+  }
+};
+
+function changeLanguage(lang){
+  document.querySelectorAll('[data-translate]').forEach(el=>{
+    const key = el.getAttribute('data-translate');
+    if(lang === 'pt'){ el.textContent = key; }
+    else if(translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
+  });
+}
+</script>
+
+</body>
+</html>
